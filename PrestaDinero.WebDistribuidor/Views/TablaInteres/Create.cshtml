@@ -1,0 +1,148 @@
+﻿@model PrestaDinero.Core.TablaInteresEntity
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Tabla de intereses</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <form asp-action="Create" asp-controller="TablaInteres" method="post">
+
+                                <input type="hidden" asp-for="IdTablaInteres">
+                                <input type="hidden" asp-for="IdTipoPrestamo">
+                                <input type="hidden" asp-for="Importe">
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="Importe" class="label-control"></label>
+                                        <input asp-for="Importe" class="form-control" disabled>
+                                        <span asp-validation-for="Importe" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label asp-for="Q6" class="label-control"></label>
+                                        <input asp-for="Q6" type="number" class="form-control">
+                                        <span asp-validation-for="Q6" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label asp-for="Q8" class="label-control"></label>
+                                        <input asp-for="Q8" type="number" class="form-control">
+                                        <span asp-validation-for="Q8" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Q10" class="label-control"></label>
+                                        <input asp-for="Q10" type="number" class="form-control">
+                                        <span asp-validation-for="Q10" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Q12" class="label-control"></label>
+                                        <input asp-for="Q12" type="number" class="form-control">
+                                        <span asp-validation-for="Q12" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Q14" class="label-control"></label>
+                                        <input asp-for="Q14" type="number" class="form-control">
+                                        <span asp-validation-for="Q14" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Q16" class="label-control"></label>
+                                        <input asp-for="Q16" type="number" class="form-control">
+                                        <span asp-validation-for="Q16" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Q18" class="label-control"></label>
+                                        <input asp-for="Q18" type="number" class="form-control">
+                                        <span asp-validation-for="Q18" class="text-danger"></span>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                            <input type="checkbox" class="custom-control-input" asp-for="Activo">
+                                            <label class="custom-control-label" asp-for="Activo">
+                                                Estatus
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer text-right">
+
+                                    <a asp-controller="TablaInteres" asp-action="Index" class="btn btn-secondary">
+                                        Regresar
+                                    </a>
+                                    <input type="submit" value="Guardar" class="btn btn-success swalDefaultSuccess">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/adminlte/plugins/moment/moment.min.js"></script>
+    <script src="~/adminlte/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $(":input").inputmask();
+            or
+            Inputmask().mask(document.querySelectorAll("input"));
+        });
+
+
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.swalDefaultSuccess').click(function () {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+
+
+
+    </script>
+}
+

@@ -1,0 +1,144 @@
+﻿@model PrestaDinero.Core.DistribuidorEntity
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Distribuidores</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <form asp-action="Create" asp-controller="Distribuidor" method="post">
+
+                                <input type="hidden" asp-for="IdDistribuidor">
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="Nombre" class="label-control"></label>
+                                        <input asp-for="Nombre" class="form-control">
+                                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ApellidoPaterno" class="label-control"></label>
+                                        <input asp-for="ApellidoPaterno" class="form-control">
+                                        <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ApellidoMaterno" class="label-control"></label>
+                                        <input asp-for="ApellidoMaterno" class="form-control">
+                                        <span asp-validation-for="ApellidoMaterno" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label asp-for="Correo" class="label-control"></label>
+                                                <input asp-for="Correo" type="email" class="form-control">
+                                                <span asp-validation-for="Correo" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-3">
+
+                                            <div class="form-group">
+                                                <label asp-for="Telefono" class="label-control"></label>
+                                                <input asp-for="Telefono" type="text" class="form-control" data-inputmask="'mask': ['999-999-9999']" data-mask="" inputmode="text">
+                                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-3">
+                                            <div class="form-group">
+                                                <label asp-for="LimiteCredito" class="label-control"></label>
+                                                <input asp-for="LimiteCredito" class="form-control">
+                                                <span asp-validation-for="LimiteCredito" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                            <input type="checkbox" class="custom-control-input" asp-for="Activo">
+                                            <label class="custom-control-label" asp-for="Activo">
+                                                Estatus
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer text-right">
+
+                                    <a asp-controller="Distribuidor" asp-action="Index" class="btn btn-secondary">
+                                        Regresar
+                                    </a>
+                                    <input type="submit" value="Guardar" class="btn btn-success swalDefaultSuccess">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/adminlte/plugins/moment/moment.min.js"></script>
+    <script src="~/adminlte/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(":input").inputmask();
+            or
+            Inputmask().mask(document.querySelectorAll("input"));
+        });
+
+
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.swalDefaultSuccess').click(function () {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+
+
+
+    </script>
+}
+

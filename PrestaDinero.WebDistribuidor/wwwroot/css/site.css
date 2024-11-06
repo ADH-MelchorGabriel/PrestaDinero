@@ -1,0 +1,32 @@
+﻿.row {
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: flex;
+    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    justify-content: center;
+}
+
+    .row > div {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+
+        .row > div:last-child {
+            margin-right: 0;
+        }
+
+
+
+
+  .vale{
+      border:1px dotted #808080;
+      padding :1rem;
+      border-radius:5px;
+      height: 410px;
+      width :415px;
+     
+  }
+
+.valerow {
+    margin-bottom: 25px;
+}

@@ -1,0 +1,127 @@
+﻿@model List<PrestaDinero.Core.ValeEntity>
+
+<div class="content-wrapper swalDefaultSuccess">
+    <section class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Vales</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12  mb-4 text-right">
+                                <a type="button" class="btn   btn-success" asp-action="Create" asp-controller="Vale">
+                                    <i class="fa fa-plus"></i>
+                                    <span class="ml-2">Nuevo</span>
+                                </a>
+                            </div>
+                            <div class=" table-responsive p-0">
+                                <table id="table_id" class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(item => item.FirstOrDefault().IdVale)</th>
+
+                                            <th>@Html.DisplayNameFor(item => item.FirstOrDefault().Cliente.Nombre)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Fecha)</th>
+
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Dispocision)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Interes)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Total)</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                        <tr>
+                                            <td>@Html.DisplayFor(Items => item.IdVale)</td>
+                                            <td>@Html.DisplayFor(Items => item.Cliente.NombreCompleto)</td>
+                                            <td class="text-right">@Html.DisplayFor(Items => item.Fecha)</td>
+                                            <td class="text-right">@Html.DisplayFor(Items => item.Dispocision)</td>
+                                            <td class="text-right">@Html.DisplayFor(Items => item.Interes)</td>
+                                            <td class="text-right">@Html.DisplayFor(Items => item.Total)</td>
+                                            <td class="text-right  py-0 align-middle">
+                                                <div class="btn-group btn-group-sm ">
+
+                                                            <a asp-action="Create" asp-controller="Vale" asp-route-id="@item.IdVale" class="btn btn-success">
+                                                                <i class="fas fa-print"></i>
+                                                            </a>
+                                                    
+                                                    <a asp-action="Create" asp-controller="Vale" asp-route-id="@item.IdVale" class="btn btn-info">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <a asp-action="Update" asp-controller="Vale" asp-route-id="@item.IdVale" class="btn btn-warning">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+
+
+                                                    <button class="btn btn-sm btn-danger" data-toggle="modal" onclick="RenderActions('/Vale/Delete/@item.IdVale')" data-target="#modalCreate"> <i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="modalCreate" class="modal fade" role="dialog" data-backdrop="false">
+
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Vale</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="OpenDialog" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+   
+
+
+    <script>
+
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            $('#table_id').DataTable();
+        });
+
+        function RenderActions(RenderActionstring) {
+
+            $("#OpenDialog").load(RenderActionstring)
+        };
+    </script>
+}

@@ -1,0 +1,105 @@
+﻿@model List<PrestaDinero.Core.TablaInteresEntity>
+
+
+<div class="content-wrapper swalDefaultSuccess">
+    <section class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-secondary">
+
+                        <form asp-controller="TablaInteres" asp-action="index" method="get">
+                            <div class="card-header">
+                                <div class="row">
+                                    <h3 class="card-title col-12">Clientes</h3>
+                                </div>
+                                <div class="row">
+
+                                    <div class="input-group col-12">
+                                        <label class="control-label"> Tipo prestamo</label>
+                                        <Select id="IdTipoPrestamo" name="IdTipoPrestamo" class="form-control" asp-items="@ViewBag.TipoPrestamos">
+                                            <option>Seleccione una opcion ...</option>
+                                        </Select>
+                                        <div class="input-group-append">
+                                            <input class="btn btn-outline-secondary" type="submit" value="Buscar">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+
+                       
+
+
+
+
+
+                        <div class="card-body">
+                            <div class="col-12  mb-4 text-right">
+                            </div>
+                            <div class=" table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Importe)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q6)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q8)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q10)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q12)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q14)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q16)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Q18)</th>
+                                            <th class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Activo)</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Importe)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q6)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q8)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q10)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q12)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q14)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q16)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Q18)</td>
+                                                    <td class="text-right">@Html.DisplayFor(Items => item.Activo)</td>
+                                                    <td class="text-right  py-0 align-middle">
+                                                        <div class="btn-group btn-group-sm ">
+                                                            <a asp-action="Create" asp-controller="TablaInteres" asp-route-id="@item.IdTablaInteres" class="btn btn-warning">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

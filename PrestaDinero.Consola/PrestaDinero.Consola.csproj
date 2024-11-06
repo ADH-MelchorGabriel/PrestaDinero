@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrestaDinero.Core\PrestaDinero.Core.csproj" />
+    <ProjectReference Include="..\PrestaDinero.ReglasNegocio\PrestaDinero.ReglasNegocio.csproj" />
+  </ItemGroup>
+
+</Project>

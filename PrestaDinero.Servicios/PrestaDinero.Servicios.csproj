@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClienteService.cs" />
+    <Compile Remove="DistribuidorService.cs" />
+    <Compile Remove="UsuarioService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrestaDinero.Conexion\ConexionDapper.csproj" />
+    <ProjectReference Include="..\PrestaDinero.Core\PrestaDinero.Core.csproj" />
+    <ProjectReference Include="..\Seguridad\Seguridad.csproj" />
+  </ItemGroup>
+
+</Project>

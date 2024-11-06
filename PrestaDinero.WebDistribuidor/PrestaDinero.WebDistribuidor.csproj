@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Rotativa\wkhtmltoimage.exe" />
+    <None Remove="Rotativa\wkhtmltopdf.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Controllers\ClienteController.cs" />
+    <Content Include="Controllers\DistribuidorController.cs" />
+    <Content Include="Controllers\HomeController.cs" />
+    <Content Include="Controllers\ReportesController.cs" />
+    <Content Include="Controllers\TablaInteresController.cs" />
+    <Content Include="Controllers\ValeController.cs" />
+    <Content Include="Rotativa\wkhtmltoimage.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rotativa\wkhtmltopdf.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrestaDinero.Data\PrestaDinero.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\adminlte\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0-beta" />
+  </ItemGroup>
+
+
+
+</Project>

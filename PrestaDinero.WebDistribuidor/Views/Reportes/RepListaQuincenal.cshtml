@@ -1,0 +1,75 @@
+﻿@model List<PrestaDinero.Core.ValeDetalleEntity>
+
+
+@{
+    Layout = "~/views/shared/_Reporte.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Presto dinero</h3>
+    </div>
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <h5>Reporte de pagos de la </h5>
+    </div>
+
+</div>
+<hr />
+<table class="table table-hover text-nowrap">
+
+    <tr>
+        <td>@Html.DisplayNameFor(item => item.FirstOrDefault().Vale.IdCliente)</td>
+        <td>@Html.DisplayNameFor(item => item.FirstOrDefault().Vale.IdVale)</td>
+        <td>@Html.DisplayNameFor(item => item.FirstOrDefault().Vale.Fecha)</td>
+        <td>@Html.DisplayNameFor(item => item.FirstOrDefault().NumeroPago)</td>
+        <td class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Vale.Total)</td>
+        <td class="text-right">Capital</td>
+        <td class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Interes)</td>
+        <td class="text-right">@Html.DisplayNameFor(item => item.FirstOrDefault().Abono)</td>
+        <td class="text-right">Saldo</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(Items => item.Vale.Cliente.NombreCompleto)</td>
+            <td>@Html.DisplayFor(Items => item.Vale.IdVale)</td>
+            <td>@Html.DisplayFor(Items => item.Vale.Fecha)</td>
+            <td> @Html.DisplayFor(Items => item.NumeroPago)</td>
+            <td class="text-right"> @Html.DisplayFor(Items => item.Vale.Total)</td>
+            <td class="text-right"> @Html.DisplayFor(Items => item.Vale.ValeDetalle.FirstOrDefault().Dispocision)</td>
+            <td class="text-right"> @Html.DisplayFor(Items => item.Vale.ValeDetalle.FirstOrDefault().Interes)</td>
+            <td class="text-right"> @Html.DisplayFor(Items => item.Abono)</td>
+            <td class="text-right"> @item.Vale.Saldo.ToString("C2")</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4">Numero de vales: @Model.Count() </td>
+        <td class="text-right"> @Model.Sum(x => x.SaldoAnterior).ToString("C2")</td>
+        <td class="text-right">@Model.Sum(x => x.Dispocision).ToString("C2")</td>
+        <td class="text-right">@Model.Sum(x => x.Interes).ToString("C2")</td>
+        <td class="text-right">@Model.Sum(x => x.Abono).ToString("C2")</td>
+        <td class="text-right">@Model.Sum(x => x.Vale.Saldo).ToString("C2")</td>
+    </tr>
+
+    <tr>
+        <td colspan="7"></td>
+
+        <td class="text-bold">Total a cobrar</td>
+        <td class="text-right"> @Model.Sum(x => x.Abono).ToString("C2") </td>
+    </tr>
+    <tr>
+        <td colspan="7"></td>
+        <td class="text-bold">Descuento</td>
+        <td class="text-right"> @Model.Sum(x => x.Comision).ToString("C2") </td>
+    </tr>
+    <tr>
+        <td colspan="7"></td>
+        <td class="text-bold">Total a pagar</td>
+        <td class="text-right"> @Model.Sum(x => x.Total).ToString("C2") </td>
+    </tr>
+</table>

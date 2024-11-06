@@ -1,0 +1,107 @@
+﻿@model List<PrestaDinero.Core.ValeDetalleEntity>
+
+
+@{
+    Layout = "~/views/shared/_Reporte.cshtml";
+    var col = 1;
+    var row = 0;
+    var colorbg = "#2E86C1";
+}
+
+
+@foreach (var item in Model)
+{
+    @if (col == 1)
+    {
+        @Html.Raw("<div class='valerow row text-center'>")
+    }
+
+    <div class="col-6 ">
+
+        <div class="vale ">
+            <table border="0" width="100%" height="100%">
+                <tr class="font-weight-bold py-2"  style="background: @colorbg; color:#fefefe; ">
+                    <td class="font-weight-bold">Credivale</td>
+                    <td class="font-weight-bold" colspan="2">Fecha de disposicion</td>
+                    <td class="font-weight-bold">Fecha de corte</td>
+                </tr>
+                <tr>
+                    <td>@item.IdVale</td>
+                    <td colspan="2">@item.Vale.Fecha.ToShortDateString()</td>
+                    <td>@item.Fecha.ToShortDateString()</td>
+                </tr>
+                <tr class="font-weight-bold py-2"  style="background: @colorbg; color:#fefefe;">
+                    <td class="font-weight-bold">No.</td>
+                    <td colspan="3">Cliente mayorista</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td colspan="3">Laura Elene Santiesteban Rubio</td>
+                </tr>
+                <tr class="font-weight-bold py-2" style="background: @colorbg; color:#fefefe;">
+                    <td colspan="3" class="font-weight-bold">Persona Autorizada</td>
+                    <td>Dispocision</td>
+                </tr>
+                <tr>
+                    <td colspan="3">@item.Vale.Cliente.NombreCompleto</td>
+                    <td>@item.Vale.Dispocision</td>
+                </tr>
+
+                <tr style="margin:0;padding:0;">
+                    <td colspan="3" rowspan="3" style="color: @colorbg; margin:0;padding:0;">
+                        <h3 class="py-2" style="border:1px solid @colorbg;padding-top:0;padding-bottom:0; margin :0 1rem;border-radius :5px">Presta Dinero</h3>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td class="font-weight-bold py-2 " style="background: @colorbg; color:#fefefe;">Saldo Anterior</td>
+                </tr>
+                <tr>
+                    <td>@item.Vale.ValeDetalle.FirstOrDefault().SaldoAnterior.ToString("C2")</td>
+                </tr>
+                <tr class="font-weight-bold py-2 " style="background: @colorbg; color:#fefefe;">
+                    <td class="font-weight-bold">Vence</td>
+                    <td class="font-weight-bold">No.Pago</td>
+                    <td class="font-weight-bold">Abono</td>
+                    <td class="font-weight-bold">Saldo</td>
+                </tr>
+                <tr>
+                    <td>@item.Fecha.ToShortDateString()</td>
+                    <td>@item.NumeroPago</td>
+                    <td>@item.Abono.ToString("C2")</td>
+                    <td>@item.Vale.Saldo.ToString("C2")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    @if (col == 2)
+    {
+        @Html.Raw("</div>")
+        col = 1;
+        row = row + 1;
+
+    }
+    else
+    {
+        col = 2;
+    }
+    if (row == 3)
+    {
+       // @Html.Raw("<br/><br/><br/>")
+        row = 0;
+
+    }
+
+    
+
+
+
+
+}
+@if (col == 2)
+{
+    @Html.Raw("<div class='col-6'></div></div>")
+    col = 1;
+}
