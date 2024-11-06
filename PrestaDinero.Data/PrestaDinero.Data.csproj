@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Helpper\" />
+    <Compile Remove="Helpper\**" />
+    <EmbeddedResource Remove="Helpper\**" />
+    <None Remove="Helpper\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presta dinero</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/adminlte/dist/css/adminlte.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <partial name="_css" />
 
     @RenderSection("Styles", required: false)
 </head>
@@ -18,23 +13,16 @@
 
 
     <partial name="_Navbar" />
-
     <partial name="_SideBar" />
 
 
     @RenderBody()
 
-
     <partial name="_Footer" />
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
-    <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <partial name="_js" />
 
     @RenderSection("Scripts", required: false)
-
-    <script src="~/adminlte/dist/js/adminlte.min.js"></script>
-
 
 </body>
 </html>
